@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PayrollMS.Models
 {
     public class Employee
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EmployeeId { get; set; }
 
         [Required(ErrorMessage = "Employee Name is required.")]
@@ -30,7 +32,7 @@ namespace PayrollMS.Models
 
         [Required(ErrorMessage = "Password is required.")]
         [DataType(DataType.Password)]
-        [StringLength(100, ErrorMessage = "Password cannot exceed 100 characters.")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$", ErrorMessage = "Password must have one uppercase, one lowercase, one digit, one special character, and be at least 8 characters long.")]
         public string Password { get; set; }
     }
 }

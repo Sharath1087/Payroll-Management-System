@@ -6,6 +6,7 @@ namespace PayrollMS.Models
     public class LeaveRequest
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LeaveRequestId { get; set; }
 
         [Required(ErrorMessage = "Employee ID is required.")]

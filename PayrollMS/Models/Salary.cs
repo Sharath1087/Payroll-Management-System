@@ -6,6 +6,7 @@ namespace PayrollMS.Models
     public class Salary
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SalaryId { get; set; }
 
         [Required(ErrorMessage = "Employee ID is required.")]
