@@ -28,6 +28,7 @@ namespace PayrollMS.Models
         [StringLength(250, ErrorMessage = "Reason cannot exceed 250 characters.")]
         public string Reason { get; set; }
 
+        [RegularExpression("^(Approved|Rejected|Pending)$", ErrorMessage = "Status must be either Approved or Rejected or Pending.")]
         public string Status { get; set; }
     }
 }
