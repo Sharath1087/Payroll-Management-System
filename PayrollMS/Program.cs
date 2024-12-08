@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PayrollMS.Data;
+using PayrollMS.Repository.IRepository;
+using PayrollMS.Repository.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,10 @@ builder.Services.AddControllersWithViews();
 
 //For EntityFramework
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ConStr")));
+
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<ILeaveRepository, LeaveRepository>();
+builder.Services.AddScoped<ISalaryRepository, SalaryRepository>();
 
 var app = builder.Build();
 
